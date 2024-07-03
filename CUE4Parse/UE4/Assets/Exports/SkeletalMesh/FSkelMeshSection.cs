@@ -264,13 +264,13 @@ public class FSkelMeshSection
             case EGame.GAME_OutlastTrials:
                 Ar.Position += 1;
                 break;
-            case EGame.GAME_RogueCompany or EGame.GAME_BladeAndSoul or EGame.GAME_SYNCED or EGame.GAME_StarWarsHunters:
+            case EGame.GAME_RogueCompany or EGame.GAME_BladeAndSoul or EGame.GAME_SYNCED or EGame.GAME_SeekersofSkyveil:
                 Ar.Position += 4;
                 break;
             case EGame.GAME_CalabiYau or EGame.GAME_FragPunk:
                 Ar.Position += 8;
                 break;
-            case EGame.GAME_MortalKombat1:
+            case EGame.GAME_MortalKombat1 or EGame.GAME_InfinityNikki:
                 Ar.Position += 12;
                 break;
         }

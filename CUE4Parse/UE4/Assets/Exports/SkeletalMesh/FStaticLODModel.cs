@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.Assets.Readers;
@@ -380,6 +381,14 @@ namespace CUE4Parse.UE4.Assets.Exports.SkeletalMesh
 
             if (HasClothData())
                 ClothVertexBuffer = new FSkeletalMeshVertexClothBuffer(Ar);
+
+            if (Ar.Game == EGame.GAME_InfinityNikki && Sections.Any(x => x.X6GameUnknownBool1))
+            {
+                _ = new FMultisizeIndexContainer(Ar);
+                _ = new FMultisizeIndexContainer(Ar);
+                _ = new FMultisizeIndexContainer(Ar);
+                _ = new FMultisizeIndexContainer(Ar);
+            }
 
             var skinWeightProfilesData = new FSkinWeightProfilesData(Ar);
 

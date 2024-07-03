@@ -269,7 +269,7 @@ namespace CUE4Parse.UE4.Assets.Exports.SkeletalMesh
                 case EGame.GAME_CalabiYau or EGame.GAME_FragPunk:
                     Ar.Position += 8;
                     break;
-                case EGame.GAME_MortalKombat1:
+                case EGame.GAME_MortalKombat1 or EGame.GAME_InfinityNikki:
                     Ar.Position += 12;
                     break;
             }

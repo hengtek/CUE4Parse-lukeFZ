@@ -382,7 +382,6 @@ namespace CUE4Parse.UE4.Assets.Exports.SkeletalMesh
             if (HasClothData())
                 ClothVertexBuffer = new FSkeletalMeshVertexClothBuffer(Ar);
 
-<<<<<<< HEAD
             if (Ar.Game == EGame.GAME_InfinityNikki && Sections.Any(x => x.X6GameUnknownBool1))
             {
                 _ = new FMultisizeIndexContainer(Ar);
@@ -391,13 +390,11 @@ namespace CUE4Parse.UE4.Assets.Exports.SkeletalMesh
                 _ = new FMultisizeIndexContainer(Ar);
             }
 
-=======
             if (Ar.Game == EGame.GAME_Spectre)
             {
                 _ = new FMultisizeIndexContainer(Ar);
             }
             
->>>>>>> 69c713361fb53c07a5c55a771555817d2bd28159
             var skinWeightProfilesData = new FSkinWeightProfilesData(Ar);
 
             if (Ar.Versions["SkeletalMesh.HasRayTracingData"])

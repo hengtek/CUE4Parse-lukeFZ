@@ -97,7 +97,7 @@ namespace CUE4Parse.UE4.Versions
             GAME_BlackMythWukong = GAME_UE5_0 + 2,
         GAME_UE5_1 = GameUtils.GameUe5Base + 1 << 4,
             GAME_3on3FreeStyleRebound = GAME_UE5_1 + 1,
-            GAME_InfinityNikki = GAME_UE5_1 + 2,
+            GAME_InfinityNikkiCbt1 = GAME_UE5_1 + 2,
             GAME_TheCastingofFrankStone = GAME_UE5_1 + 3,
         GAME_UE5_2 = GameUtils.GameUe5Base + 2 << 4,
             GAME_DeadByDaylight = GAME_UE5_2 + 1,
@@ -111,6 +111,7 @@ namespace CUE4Parse.UE4.Versions
             GAME_Rennsport = GAME_UE5_3 + 5,
         GAME_UE5_4 = GameUtils.GameUe5Base + 4 << 4,
             GAME_FunkoFusion = GAME_UE5_4 + 1,
+            GAME_InfinityNikki = GAME_UE5_4 + 2,
         GAME_UE5_5 = GameUtils.GameUe5Base + 5 << 4,
         GAME_UE5_6 = GameUtils.GameUe5Base + 6 << 4,
 
@@ -181,5 +182,8 @@ namespace CUE4Parse.UE4.Versions
                 _ => (int) EUnrealEngineObjectUE4Version.AUTOMATIC_VERSION
             });
         }
+
+        public static bool IsInfinityNikki(this EGame game) =>
+            game is EGame.GAME_InfinityNikki or EGame.GAME_InfinityNikkiCbt1;
     }
 }

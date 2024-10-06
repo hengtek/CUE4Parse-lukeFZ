@@ -278,7 +278,7 @@ public class FSkelMeshSection
             case EGame.GAME_MortalKombat1:
                 Ar.Position += 12;
                 break;
-            case EGame.GAME_InfinityNikki:
+            case { } when Ar.Game.IsInfinityNikki():
                 if (FX6GameCustomVersion.Get(Ar) >= FX6GameCustomVersion.Type.SkelMeshRenderSectionChanges1)
                 {
                     X6GameUnknownBool1 = Ar.ReadBoolean();

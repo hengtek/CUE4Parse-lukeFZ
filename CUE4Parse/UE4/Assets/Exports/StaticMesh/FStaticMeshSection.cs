@@ -36,7 +36,7 @@ namespace CUE4Parse.UE4.Assets.Exports.StaticMesh
             bAffectDistanceFieldLighting = Ar.Game >= EGame.GAME_UE5_1 && Ar.ReadBoolean();
             if (Ar.Game is EGame.GAME_RogueCompany or EGame.GAME_Grounded) Ar.Position += 4;
 
-            if (Ar.Game == EGame.GAME_InfinityNikki)
+            if (Ar.Game.IsInfinityNikki())
             {
                 if (FX6GameCustomVersion.Get(Ar) >= FX6GameCustomVersion.Type.StaticMeshSectionChanges1)
                 {

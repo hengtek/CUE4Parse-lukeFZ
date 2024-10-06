@@ -384,16 +384,16 @@ namespace CUE4Parse.UE4.Assets.Exports.SkeletalMesh
             if (HasClothData())
                 ClothVertexBuffer = new FSkeletalMeshVertexClothBuffer(Ar);
 
-            if (Ar.Game == EGame.GAME_Spectre)
-            {
-                _ = new FMultisizeIndexContainer(Ar);
-            }
-            
             if (Ar.Game == EGame.GAME_InfinityNikki && Sections.Any(x => x.X6GameUnknownBool1))
             {
                 _ = new FMultisizeIndexContainer(Ar);
                 _ = new FMultisizeIndexContainer(Ar);
                 _ = new FMultisizeIndexContainer(Ar);
+                _ = new FMultisizeIndexContainer(Ar);
+            }
+
+            if (Ar.Game == EGame.GAME_Spectre)
+            {
                 _ = new FMultisizeIndexContainer(Ar);
             }
 

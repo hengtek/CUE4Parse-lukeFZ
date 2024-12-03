@@ -8,6 +8,7 @@ using System.Text;
 
 using CUE4Parse.Encryption.Aes;
 using CUE4Parse.FileProvider.Objects;
+using CUE4Parse.GameTypes.InfinityNikki.Encryption.Aes;
 using CUE4Parse.UE4.Exceptions;
 using CUE4Parse.UE4.IO.Objects;
 using CUE4Parse.UE4.Objects.Core.Misc;
@@ -255,6 +256,8 @@ namespace CUE4Parse.UE4.IO
                 reader.ReadAt(partitionOffset, compressedBuffer, 0, (int) rawSize);
                 // FragPunk decided to encrypt the global utoc too.
                 compressedBuffer = DecryptIfEncrypted(compressedBuffer, 0, (int) rawSize, IsEncrypted, Game == EGame.GAME_FragPunk && Path.Contains("global", StringComparison.Ordinal));
+                if (Game == EGame.GAME_InfinityNikki && IsEncrypted && AesKey != null)
+                    compressedBuffer = InfinityNikkiAes.PostProcessDecryptedData(compressedBuffer, AesKey);
 
                 byte[] src;
                 if (compressionBlock.CompressionMethodIndex == 0)

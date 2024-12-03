@@ -118,7 +118,8 @@ public enum EGame
         GAME_AshesOfCreation = GAME_UE5_3 + 6,
     GAME_UE5_4 = GameUtils.GameUe5Base + 4 << 4,
         GAME_FunkoFusion = GAME_UE5_4 + 1,
-        GAME_InfinityNikki = GAME_UE5_4 + 2,
+        GAME_InfinityNikkiCbt3 = GAME_UE5_4 + 2,
+        GAME_InfinityNikki = GAME_UE5_4 + 3,
     GAME_UE5_5 = GameUtils.GameUe5Base + 5 << 4,
     GAME_UE5_6 = GameUtils.GameUe5Base + 6 << 4,
 
@@ -191,5 +192,5 @@ public static class GameUtils
     }
 
     public static bool IsInfinityNikki(this EGame game) =>
-        game is EGame.GAME_InfinityNikkiCbt1 or EGame.GAME_InfinityNikki;
+        game is EGame.GAME_InfinityNikkiCbt1 or EGame.GAME_InfinityNikkiCbt3 or EGame.GAME_InfinityNikki;
 }

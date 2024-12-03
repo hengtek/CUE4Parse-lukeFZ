@@ -8,7 +8,7 @@ public static class PixelFormatUtils
     {
         //        Pixel Format                     Name               BlockSizeX  BlockSizeY  BlockSizeZ  BlockBytes  NumComponents  Supported by CUE4Parse
         new(EPixelFormat.PF_Unknown,            "unknown",                0,          0,          0,          0,            0,                false),
-        new(EPixelFormat.PF_A32B32G32R32F,      "A32B32G32R32F",          1,          1,          1,          16,           4,                false),
+        new(EPixelFormat.PF_A32B32G32R32F,      "A32B32G32R32F",          1,          1,          1,          16,           4,                true),
         new(EPixelFormat.PF_B8G8R8A8,           "B8G8R8A8",               1,          1,          1,          4,            4,                true),
         new(EPixelFormat.PF_G8,                 "G8",                     1,          1,          1,          1,            1,                true),
         new(EPixelFormat.PF_G16,                "G16",                    1,          1,          1,          2,            1,                true),

@@ -495,7 +495,7 @@ public static class TextureDecoder
         {
             for (int y = 0; y < height; y++)
             {
-                var srcPtr = (uint*) (inp + z * height * srcPitch + y * srcPitch);
+                var srcPtr = (float*) (inp + z * height * srcPitch + y * srcPitch);
                 var destPtr = z * height * width * dstPitch + y * width * dstPitch;
 
                 for (int x = 0; x < width; x++)

@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using CUE4Parse.Encryption.Aes;
+using CUE4Parse.GameTypes.InfinityNikki.Encryption.Aes;
 using CUE4Parse.UE4.Exceptions;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Readers;
@@ -34,7 +35,11 @@ public abstract partial class AbstractAesVfsReader : AbstractVfsReader, IAesVfsR
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool TestAesKey(byte[] bytes, FAesKey key)
     {
-        return IsValidIndex(bytes.Decrypt(key));
+        var decrypted = bytes.Decrypt(key);
+        if (_game == EGame.GAME_InfinityNikki)
+            decrypted = InfinityNikkiAes.PostProcessDecryptedData(decrypted, key);
+
+        return IsValidIndex(decrypted);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

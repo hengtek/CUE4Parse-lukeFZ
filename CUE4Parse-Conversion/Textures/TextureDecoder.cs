@@ -416,6 +416,17 @@ public static class TextureDecoder
 
                 colorType = SKColorType.Rgba8888;
                 break;
+            case EPixelFormat.PF_A32B32G32R32F:
+                unsafe
+                {
+                    fixed (byte* d = bytes)
+                    {
+                        data = ConvertRawA32B32G32R32FDataToRGBA8888(sizeX, sizeY, sizeZ, d, sizeX * 16, false);
+                    }
+                }
+
+                colorType = SKColorType.Rgba8888;
+                break;
             default: throw new NotImplementedException($"Unknown pixel format: {formatInfo.UnrealFormat}");
         }
     }
@@ -463,6 +474,39 @@ public static class TextureDecoder
                         HalfToFloat(*srcPtr++),
                         HalfToFloat(*srcPtr++)
                     ).ToFColor(linearToGamma);
+                    ret[destPtr++] = color.R;
+                    ret[destPtr++] = color.G;
+                    ret[destPtr++] = color.B;
+                    ret[destPtr++] = color.A;
+                }
+            }
+        }
+
+        return ret;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static unsafe byte[] ConvertRawA32B32G32R32FDataToRGBA8888(int width, int height, int depth, byte* inp, int srcPitch, bool linearToGamma)
+    {
+        const int dstPitch = sizeof(byte) * 4 / sizeof(byte); // 4
+
+        var ret = new byte[width * height * depth * 4];
+        for (var z = 0; z < depth; z++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                var srcPtr = (float*) (inp + z * height * srcPitch + y * srcPitch);
+                var destPtr = z * height * width * dstPitch + y * width * dstPitch;
+
+                for (int x = 0; x < width; x++)
+                {
+                    var color = new FLinearColor(
+                        a: *srcPtr++,
+                        b: *srcPtr++,
+                        g: *srcPtr++,
+                        r: *srcPtr++
+                    ).ToFColor(linearToGamma);
+
                     ret[destPtr++] = color.R;
                     ret[destPtr++] = color.G;
                     ret[destPtr++] = color.B;

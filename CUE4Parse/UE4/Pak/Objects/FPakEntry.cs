@@ -137,6 +137,8 @@ namespace CUE4Parse.UE4.Pak.Objects
                 Ar.Position += 8; // Timestamp
             Ar.Position += 20; // Hash
 
+            if (Ar.Game.IsInfinityNikki()) Ar.Position += 20; // Second Hash
+
             if (reader.Info.Version >= PakFile_Version_CompressionEncryption)
             {
                 if (CompressionMethod != CompressionMethod.None)
@@ -282,7 +284,7 @@ namespace CUE4Parse.UE4.Pak.Objects
             {
                 GAME_TorchlightInfinite => 1,
                 GAME_BlackMythWukong => 1,
-                GAME_InfinityNikki => 20,
+                { } when reader.Ar.Game.IsInfinityNikki() => 20,
                 GAME_VisionsofMana => -3,
                 _ => 0
             };

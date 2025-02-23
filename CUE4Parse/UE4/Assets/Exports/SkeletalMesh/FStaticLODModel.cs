@@ -11,6 +11,7 @@ using CUE4Parse.UE4.Readers;
 using CUE4Parse.UE4.Versions;
 using Newtonsoft.Json;
 using CUE4Parse.GameTypes.MK1.Assets.Objects;
+using System.Linq;
 
 namespace CUE4Parse.UE4.Assets.Exports.SkeletalMesh;
 
@@ -388,6 +389,14 @@ public class FStaticLODModel
 
         if (HasClothData())
             ClothVertexBuffer = new FSkeletalMeshVertexClothBuffer(Ar);
+
+        if (Ar.Game.IsInfinityNikki() && Sections.Any(x => x.X6GameUnknownBool1))
+        {
+            _ = new FMultisizeIndexContainer(Ar);
+            _ = new FMultisizeIndexContainer(Ar);
+            _ = new FMultisizeIndexContainer(Ar);
+            _ = new FMultisizeIndexContainer(Ar);
+        }
 
         if (Ar.Game == EGame.GAME_Spectre)
         {

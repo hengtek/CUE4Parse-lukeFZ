@@ -101,7 +101,7 @@ public enum EGame
         GAME_BlackMythWukong = GAME_UE5_0 + 2,
     GAME_UE5_1 = GameUtils.GameUe5Base + 1 << 4,
         GAME_3on3FreeStyleRebound = GAME_UE5_1 + 1,
-        GAME_Stalker2 = GAME_UE5_1 + 2,
+        GAME_InfinityNikkiCbt1 = GAME_UE5_1 + 2,
         GAME_TheCastingofFrankStone = GAME_UE5_1 + 3,
         GAME_SilentHill2Remake = GAME_UE5_1 + 4,
     GAME_UE5_2 = GameUtils.GameUe5Base + 2 << 4,
@@ -119,8 +119,8 @@ public enum EGame
         GAME_Avowed = GAME_UE5_3 + 7,
     GAME_UE5_4 = GameUtils.GameUe5Base + 4 << 4,
         GAME_FunkoFusion = GAME_UE5_4 + 1,
-        GAME_InfinityNikki = GAME_UE5_4 + 2,
-        GAME_NevernessToEverness = GAME_UE5_4 + 3,
+        GAME_InfinityNikkiCbt3 = GAME_UE5_4 + 2,
+        GAME_InfinityNikki = GAME_UE5_4 + 3,
     GAME_UE5_5 = GameUtils.GameUe5Base + 5 << 4,
     GAME_UE5_6 = GameUtils.GameUe5Base + 6 << 4,
 
@@ -191,4 +191,7 @@ public static class GameUtils
             _ => (int) EUnrealEngineObjectUE4Version.AUTOMATIC_VERSION
         });
     }
+
+    public static bool IsInfinityNikki(this EGame game) =>
+        game is EGame.GAME_InfinityNikkiCbt1 or EGame.GAME_InfinityNikkiCbt3 or EGame.GAME_InfinityNikki;
 }

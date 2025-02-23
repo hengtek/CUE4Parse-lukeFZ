@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using CUE4Parse.GameTypes.InfinityNikki;
 using CUE4Parse.UE4.Assets.Readers;
 using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.UE4.Objects.Engine;
@@ -44,6 +45,10 @@ public class FSkelMeshSection
     public int GenerateUpToLodIndex;
     public int OriginalDataSectionIndex;
     public int ChunkedParentSectionIndex;
+
+    public bool X6GameUnknownBool1;
+    public bool X6GameUnknownBool2;
+    public bool X6GameUnknownBool3;
 
     public bool HasClothData => ClothMappingDataLODs.Any(data => data.Length > 0);
 
@@ -275,6 +280,18 @@ public class FSkelMeshSection
                 break;
             case EGame.GAME_MortalKombat1:
                 Ar.Position += 12;
+                break;
+            case { } when Ar.Game.IsInfinityNikki():
+                if (FX6GameCustomVersion.Get(Ar) >= FX6GameCustomVersion.Type.SkelMeshRenderSectionChanges1)
+                {
+                    X6GameUnknownBool1 = Ar.ReadBoolean();
+                    X6GameUnknownBool2 = Ar.ReadBoolean();
+                }
+
+                if (FX6GameCustomVersion.Get(Ar) >= FX6GameCustomVersion.Type.SkelMeshRenderAndStaticMeshSectionChanges2)
+                {
+                    X6GameUnknownBool3 = Ar.ReadBoolean();
+                }
                 break;
         }
     }

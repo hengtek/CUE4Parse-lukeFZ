@@ -34,7 +34,7 @@ namespace CUE4Parse.FileProvider
         /// the localized resources (strings) from the game
         /// </summary>
         [Obsolete("use Internationalization instead")]
-        public IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> LocalizedResources => Internationalization;
+        public IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> LocalizedResources { get; }
 
         /// <summary>
         /// DefaultGame.ini file from the game

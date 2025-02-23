@@ -46,6 +46,7 @@ namespace CUE4Parse.FileProvider
 
         public FileProviderDictionary Files { get; }
         public InternationalizationDictionary Internationalization { get; }
+        public IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> LocalizedResources => Internationalization;
         public IDictionary<string, string> VirtualPaths { get; }
         public CustomConfigIni DefaultGame { get; }
         public CustomConfigIni DefaultEngine { get; }

@@ -104,6 +104,7 @@ public enum EGame
         GAME_InfinityNikkiCbt1 = GAME_UE5_1 + 2,
         GAME_TheCastingofFrankStone = GAME_UE5_1 + 3,
         GAME_SilentHill2Remake = GAME_UE5_1 + 4,
+        GAME_Stalker2 = GAME_UE5_1 + 5,
     GAME_UE5_2 = GameUtils.GameUe5Base + 2 << 4,
         GAME_DeadByDaylight = GAME_UE5_2 + 1,
         GAME_PaxDei = GAME_UE5_2 + 2,
@@ -121,6 +122,7 @@ public enum EGame
         GAME_FunkoFusion = GAME_UE5_4 + 1,
         GAME_InfinityNikkiCbt3 = GAME_UE5_4 + 2,
         GAME_InfinityNikki = GAME_UE5_4 + 3,
+        GAME_NevernessToEverness = GAME_UE5_4 + 4,
     GAME_UE5_5 = GameUtils.GameUe5Base + 5 << 4,
     GAME_UE5_6 = GameUtils.GameUe5Base + 6 << 4,
 

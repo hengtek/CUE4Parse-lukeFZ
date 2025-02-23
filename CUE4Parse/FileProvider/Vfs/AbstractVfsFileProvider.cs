@@ -15,6 +15,7 @@ using CUE4Parse.GameTypes.DeltaForce.Encryption.Aes;
 using CUE4Parse.GameTypes.DreamStar.Encryption.Aes;
 using CUE4Parse.GameTypes.FSR.Encryption.Aes;
 using CUE4Parse.GameTypes.FunkoFusion.Encryption.Aes;
+using CUE4Parse.GameTypes.InfinityNikki.Encryption.Aes;
 using CUE4Parse.GameTypes.MJS.Encryption.Aes;
 using CUE4Parse.GameTypes.NetEase.MAR.Encryption.Aes;
 using CUE4Parse.GameTypes.PAXDEI.Encryption.Aes;
@@ -76,6 +77,7 @@ namespace CUE4Parse.FileProvider.Vfs
                 EGame.GAME_Rennsport => RennsportAes.RennsportDecrypt,
                 EGame.GAME_FunkoFusion => FunkoFusionAes.FunkoFusionDecrypt,
                 EGame.GAME_TonyHawkProSkater12 => THPS12Aes.THPS12Decrypt,
+                EGame.GAME_InfinityNikki => InfinityNikkiAes.InfinityNikkiDecrypt,
                 _ => null
             };
         }

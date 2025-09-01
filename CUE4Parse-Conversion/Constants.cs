@@ -8,7 +8,7 @@ public class Constants
     public const int PSK_VERSION = 20220723;
     public const int PSA_VERSION = 20100422;
 
-    public const int MAX_MESH_UV_SETS = 8;
+    public const int MAX_MESH_UV_SETS = 32; // Nikki uses 32 instead of 8
     public const int MESH_HASH_SIZE = 16384;
 
     public const int MAX_ANIM_LINEAR_KEYS = 4;

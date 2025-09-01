@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using CUE4Parse.Compression;
 using CUE4Parse.Encryption.Aes;
+using CUE4Parse.GameTypes.InfinityNikki;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Readers;
 using CUE4Parse.UE4.Versions;
@@ -296,6 +297,25 @@ public class FPakEntry : VfsEntry
             Ar.Position++;
         }
 
+        if (reader.Versions.IsInfinityNikkiPakEntryBitfieldChanged())
+        {
+            var compressionBlocksNum = (bitfield >> 6) & 0xFFFF;
+            var isOffset32BitSafe = (bitfield >> 31) & 1;
+            var isSize32BitSafe = (bitfield >> 22) & 1;
+            var isUncompressedSize32BitSafe = (bitfield >> 30) & 1;
+            var compressedSizeBacked = bitfield & 0x3F;
+            var isEncrypted = (bitfield >> 29) & 1;
+            var compressionMethodIndex = (bitfield >> 23) & 0x3F;
+
+            bitfield = compressedSizeBacked
+                       | (compressionBlocksNum << 6)
+                       | (isEncrypted << 22)
+                       | (compressionMethodIndex << 23)
+                       | (isSize32BitSafe << 29)
+                       | (isUncompressedSize32BitSafe << 30)
+                       | (isOffset32BitSafe << 31);
+        }
+
         uint compressionBlockSize = (bitfield & 0x3f) == 0x3f ? Ar.Read<uint>() : (bitfield & 0x3f) << 11;
 
         // Filter out the CompressionMethod.
@@ -353,7 +373,7 @@ public class FPakEntry : VfsEntry
         {
             GAME_TorchlightInfinite or GAME_EtheriaRestart => 1,
             GAME_BlackMythWukong => 1,
-            GAME_InfinityNikki => 20,
+            { } when reader.Ar.Versions.IsInfinityNikkiCustomAesVersion() => 20,
             GAME_VisionsofMana => -3,
             _ => 0
         };

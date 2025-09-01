@@ -16,7 +16,7 @@ using CUE4Parse.GameTypes.DeltaForce.Encryption.Aes;
 using CUE4Parse.GameTypes.DreamStar.Encryption.Aes;
 using CUE4Parse.GameTypes.FSR.Encryption.Aes;
 using CUE4Parse.GameTypes.FunkoFusion.Encryption.Aes;
-using CUE4Parse.GameTypes.INikki.Encryption.Aes;
+using CUE4Parse.GameTypes.InfinityNikki.Encryption.Aes;
 using CUE4Parse.GameTypes.MindsEye.Encryption.Aes;
 using CUE4Parse.GameTypes.MJS.Encryption.Aes;
 using CUE4Parse.GameTypes.NetEase.MAR.Encryption.Aes;
@@ -95,6 +95,7 @@ namespace CUE4Parse.FileProvider.Vfs
                 EGame.GAME_OnePieceAmbition => OnePieceAmbitionEncryption.OnePieceAmbitionDecrypt,
                 EGame.GAME_UnchartedWatersOrigin => UnchartedWatersOriginAes.UnchartedWatersOriginDecrypt,
                 EGame.GAME_ArenaBreakoutInifinite => ABIDecryption.ABIDecrypt,
+                EGame.GAME_InfinityNikkiV19 => InfinityNikkiAes.InfinityNikkiV19Decrypt,
                 _ => null
             };
         }

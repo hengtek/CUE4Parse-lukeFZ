@@ -1,6 +1,5 @@
 using System.Runtime.CompilerServices;
 using CUE4Parse.Encryption.Aes;
-using CUE4Parse.GameTypes.InfinityNikki;
 using CUE4Parse.UE4.Exceptions;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Readers;
@@ -31,13 +30,9 @@ public abstract partial class AbstractAesVfsReader : AbstractVfsReader, IAesVfsR
     public abstract byte[] MountPointCheckBytes();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public bool TestAesKey(byte[] bytes, FAesKey key)
+    public static bool TestAesKey(byte[] bytes, FAesKey key)
     {
         var decrypted = bytes.Decrypt(key);
-
-        if (Versions.IsInfinityNikkiCustomAesVersion())
-            decrypted = Versions.InfinityNikkiPostProcessDecryptedData(decrypted, key);
-
         return IsValidIndex(decrypted);
     }
 

@@ -1,5 +1,6 @@
 using System;
 using CUE4Parse.Encryption.Aes;
+using CUE4Parse.UE4.Exceptions;
 using CUE4Parse.UE4.VirtualFileSystem;
 using AesProvider = CUE4Parse.Encryption.Aes.Aes;
 
@@ -20,7 +21,9 @@ public static class InfinityNikkiAes
             throw new NullReferenceException("reader.AesKey");
 
         var output = bytes.Decrypt(beginOffset, count, reader.AesKey);
-        return PostProcessDecryptedData(output, reader.AesKey);
+        var decrypted = PostProcessDecryptedData(output, reader.AesKey);
+
+        return decrypted;
     }
 
     public static byte[] InfinityNikkiV19Decrypt(byte[] bytes, int beginOffset, int count, bool isIndex, IAesVfsReader reader)
@@ -33,7 +36,9 @@ public static class InfinityNikkiAes
             throw new NullReferenceException("reader.AesKey");
 
         var output = bytes.Decrypt(beginOffset, count, reader.AesKey);
-        return PostProcessDecryptedDataV19(output, reader.AesKey);
+        var decrypted = PostProcessDecryptedDataV19(output, reader.AesKey);
+
+        return decrypted;
     }
 
     public static byte[] PostProcessDecryptedDataV19(byte[] data, FAesKey key)
